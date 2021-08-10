@@ -4,6 +4,10 @@ include "Util.php";
 
 class User extends CI_Controller {
 	
+	public function index() {
+		echo "OK";
+	}
+	
 	public function get_news_categories() {
 		echo json_encode($this->db->query("SELECT * FROM `news_categories` ORDER BY `category_en`")->result_array());
 	}
@@ -36,5 +40,43 @@ class User extends CI_Controller {
 		$verificationCode = $this->input->post('verification_code');
 		Util::send_email($email, "Your Bank Sampah verification code: " . $verificationCode,
 			"Please enter this 6-digit verification code into the available field: <b>" . $verificationCode . "</b>");
+	}
+	
+	public function signup_as_nasabah() {
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$phone = $this->input->post('phone');
+		$password = $this->input->post('password');
+		$address = $this->input->post('address');
+		$this->db->insert('users', array(
+			'name' => $name,
+			'email' => $email,
+			'phone' => $phone,
+			'password' => $password,
+			'address' => $address,
+			'role' => 'nasabah',
+			'email_verified' => 0
+		));
+	}
+	
+	public function verify_user_email() {
+		$email = $this->input->post('email');
+		$this->db->query("UPDATE `users` SET `email_verified`=1 WHERE `email`='" . $email . "'");
+	}
+	
+	public function login() {
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$users = $this->db->query("SELECT * FROM `users` WHERE `email`='" . $email . "' AND `password`='" . $password . "'")
+			->result_array();
+		if (sizeof($users) > 0) {
+			$user = $users[0];
+			$user['response_code'] = 1;
+			echo json_encode($user);
+		} else {
+			echo json_encode(array(
+				'response_code' => -1
+			));
+		}
 	}
 }
