@@ -2,7 +2,7 @@
 
 class Util {
 	
-	static void send_email($to, $subject, $message) {
+	public static function send_email($to, $subject, $message) {
 		$headers = "From: admin@kerjabisa.com\r\n";
 		$headers .= "Reply-To: admin@kerjabisa.com\r\n";
 		$headers .= "MIME-Version: 1.0\r\n";
