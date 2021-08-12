@@ -22,11 +22,23 @@ class User extends CI_Controller {
 		$latitude = doubleval($this->input->post('latitude'));
 		$longitude = doubleval($this->input->post('longitude'));
 		$banks = $this->db->query("SELECT *, SQRT(POW(69.1 * (latitude - " . $latitude . "), 2) + POW(69.1 * (" . $longitude . " - longitude) * COS(latitude / 57.3), 2)) AS distance FROM `banks` ORDER BY distance")->result_array();
+		for ($i=0; $i<sizeof($banks); $i++) {
+			$banks[$i]['images'] = $this->db->query("SELECT * FROM `bank_images` WHERE `bank_id`=" . $banks[$i]['id'])->result_array();
+		}
+		echo json_encode($banks);
+	}
+	
+	public function get_open_banks() {
+		$time = $this->input->post('time');
+		$banks = $this->db->query("SELECT * FROM `banks` WHERE TIMEDIFF('" . $time . "', `open_hour`)>0 AND TIMEDIFF(`close_hour`, '" . $time . "')>0")->result_array();
+		for ($i=0; $i<sizeof($banks); $i++) {
+			$banks[$i]['images'] = $this->db->query("SELECT * FROM `bank_images` WHERE `bank_id`=" . $banks[$i]['id'])->result_array();
+		}
 		echo json_encode($banks);
 	}
 	
 	public function get_informations() {
-		$informations = $this->db->query("SELECT * FROM `informations` ORDER BY `date` DESC")->result_array();
+		$informations = $this->db->query("SELECT * FROM `informations` ORDER BY `date` DESC LIMIT 10")->result_array();
 		echo json_encode($informations);
 	}
 	
@@ -78,5 +90,12 @@ class User extends CI_Controller {
 				'response_code' => -1
 			));
 		}
+	}
+	
+	public function get_monthly_statistics() {
+		$month = intval($this->input->post('month'));
+		$year = intval($this->input->post('year'));
+		$transactions = $this->db->query("SELECT *, SUM(weight) as total_weights FROM `transactions` WHERE MONTH(`date`)=" . $month . " AND YEAR(`date`)=" . $year . " GROUP BY `item_id`")->result_array();
+		echo json_encode($transactions);
 	}
 }
