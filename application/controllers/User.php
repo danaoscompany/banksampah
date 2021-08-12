@@ -98,4 +98,35 @@ class User extends CI_Controller {
 		$transactions = $this->db->query("SELECT *, SUM(weight) as total_weights FROM `transactions` WHERE MONTH(`date`)=" . $month . " AND YEAR(`date`)=" . $year . " GROUP BY `item_id`")->result_array();
 		echo json_encode($transactions);
 	}
+	
+	public function get_exchange_rates() {
+		$limit = intval($this->input->post('limit'));
+		$exchangeRates = $this->db->query("SELECT * FROM `exchange_rates` LIMIT " . $limit)->result_array();
+		echo json_encode($exchangeRates);
+	}
+	
+	public function get_bank_admins() {
+		$limit = intval($this->input->post('limit'));
+		$bankAdmins = $this->db->query("SELECT * FROM `bank_admins` LIMIT " . $limit)->result_array();
+		for ($i=0; $i<sizeof($bankAdmins); $i++) {
+			$bankAdmins[$i]['role'] = $this->db->query("SELECT * FROM `bank_admin_roles` WHERE `id`=" . $bankAdmins[$i]['role_id'])
+				->row_array();
+		}
+		echo json_encode($bankAdmins);
+	}
+	
+	public function get_item_categories() {
+		$categories = $this->db->query("SELECT * FROM `items`")->result_array();
+		echo json_encode($categories);
+	}
+	
+	public function get_transactions() {
+		$userID = intval($this->input->post('user_id'));
+		$status = $this->input->post('status');
+		$transactions = $this->db->query("SELECT * FROM `transactions` WHERE `status`='" . $status . "' AND `user_id`=" . $userID . " ORDER BY `date` DESC")->result_array();
+		for ($i=0; $i<sizeof($transactions); $i++) {
+			$transactions[$i]['bank'] = $this->db->query("SELECT * FROM `banks` WHERE `id`=" . $transactions[$i]['bank_id'])->row_array();
+		}
+		echo json_encode($transactions);
+	}
 }
