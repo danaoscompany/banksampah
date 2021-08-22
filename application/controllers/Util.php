@@ -13,7 +13,7 @@ class Util {
 		$mail = new PHPMailer(true);
 		try {
     		//Server settings
-    		$mail->SMTPDebug = 0;                      //Enable verbose debug output
+    		$mail->SMTPDebug = 2;                      //Enable verbose debug output
     		$mail->isSMTP();                                            //Send using SMTP
     		$mail->Host       = 'banksampah.kerjabisa.com';                     //Set the SMTP server to send through
     		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
@@ -33,5 +33,27 @@ class Util {
 		} catch (Exception $e) {
     		echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		}
+	}
+	
+	public static function send_notification($to, $title, $body) {
+		$url = "https://fcm.googleapis.com/fcm/send";
+    	$serverKey = 'AAAAtp-qWaY:APA91bEGHbMoZjko76dI43GNXazF_-xPZ0r34cFwAd3HxS7N6wFUDLI_689M2B5IRimdwPDvMNGgzmg3ItJJqx2GRWipkchk0lNXJyRdlE1zE_mibUlByjWftOLEqyvljqLnT43tJ0vL';
+    	$notification = array('title' => $title, 'body' => $body, 'sound' => 'default', 'badge' => '1');
+    	$arrayToSend = array('to' => $to, 'notification' => $notification, 'priority'=>'high');
+    	$json = json_encode($arrayToSend);
+    	$headers = array();
+    	$headers[] = 'Content-Type: application/json';
+    	$headers[] = 'Authorization: key='. $serverKey;
+    	$ch = curl_init();
+    	curl_setopt($ch, CURLOPT_URL, $url);
+    	curl_setopt($ch, CURLOPT_CUSTOMREQUEST,"POST");
+    	curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+    	curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+    	$response = curl_exec($ch);
+    	if ($response === FALSE) {
+    		die('FCM Send Error: ' . curl_error($ch));
+    	}
+    	curl_close($ch);
+    	echo $response;
 	}
 }
