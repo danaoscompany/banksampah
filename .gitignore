@@ -1,31 +1,46 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
 .DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
 
-application/cache/*
-!application/cache/index.html
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
 
-application/logs/*
-!application/logs/index.html
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
 
-!application/*/.htaccess
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
 
-composer.lock
+# Web related
+lib/generated_plugin_registrant.dart
 
-user_guide_src/build/*
-user_guide_src/cilexer/build/*
-user_guide_src/cilexer/dist/*
-user_guide_src/cilexer/pycilexer.egg-info/*
-/vendor/
+# Symbolication related
+app.*.symbols
 
-# IDE Files
-#-------------------------
-/nbproject/
-.idea/*
+# Obfuscation related
+app.*.map.json
 
-## Sublime Text cache files
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-/tests/tests/
-/tests/results/
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release

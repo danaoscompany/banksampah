@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "784362789286",
+    "project_id": "bank-sampah-35fa5",
+    "storage_bucket": "bank-sampah-35fa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784362789286:android:441d34de1f80fe163e1767",
+        "android_client_info": {
+          "package_name": "com.banksampah.banksampah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784362789286-1493n9923r70j6202p02fumphmvjt4lr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.banksampah.banksampah",
+            "certificate_hash": "6892b365e68804943e6fac82989e3b0e77560e60"
+          }
+        },
+        {
+          "client_id": "784362789286-5f6m5k1cpdos046lfadmcsj18tqrmup6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.banksampah.banksampah",
+            "certificate_hash": "9fb25d0c0de7b63820bef8f7c1c7936d9f60ff19"
+          }
+        },
+        {
+          "client_id": "784362789286-jfbsnoaajrhki9nscmkf0l92p0hbn33r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvfG9_CLXQ_NeMidaKlsGt2OMsZ9ZUHnQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784362789286-jfbsnoaajrhki9nscmkf0l92p0hbn33r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
