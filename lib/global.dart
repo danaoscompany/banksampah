@@ -18,12 +18,12 @@ import 'package:banksampah/activity.dart';
 
 class Global {
   static var PROTOCOL = "http";
-  static var HOST = "192.168.43.254";
+  /*static var HOST = "192.168.43.254";
   static var API_URL = PROTOCOL + "://" + HOST + "/banksampah/ci_index.php";
-  static var USERDATA_URL = PROTOCOL + "://" + HOST + "/banksampah/userdata/";
-  /*static var HOST = "banksampah.kerjabisa.com";
+  static var USERDATA_URL = PROTOCOL + "://" + HOST + "/banksampah/userdata/";*/
+  static var HOST = "ebanksampah.com";
   static var API_URL = PROTOCOL+"://"+HOST+"/ci_index.php";
-  static var USERDATA_URL = PROTOCOL+"://"+HOST+"/userdata/";*/
+  static var USERDATA_URL = PROTOCOL+"://"+HOST+"/userdata/";
   static int USER_ID = 0;
   static String FCM_KEY = "";
   static var mainColor = 0xFF00BE5B;
