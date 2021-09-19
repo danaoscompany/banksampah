@@ -89,7 +89,7 @@ class BankDetailsState extends State<BankDetails> {
                   child: PageView.builder(itemBuilder: (context, index) {
                     return ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(Global.USERDATA_URL + images[index]['image_path'],
+                        child: Image.network(Global.USERDATA_URL + "banksampah/userdata/" + images[index]['image_path'],
                             width: MediaQuery.of(context).size.width, height: 240, fit: BoxFit.fill));
                   }))),
           Container(
@@ -185,7 +185,7 @@ class BankDetailsState extends State<BankDetails> {
                                 height: 60,
                                 padding: EdgeInsets.only(left: 5, right: 5),
                                 child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                                  Image.network(Global.USERDATA_URL + exchangeRates[index]['icon'],
+                                  Image.network(Global.USERDATA_URL + "banksampah/userdata/" + exchangeRates[index]['icon'],
                                       width: 35, height: 35),
                                   Container(
                                       margin: EdgeInsets.only(left: 5),
@@ -257,7 +257,7 @@ class BankDetailsState extends State<BankDetails> {
                                         ClipRRect(
                                           borderRadius: BorderRadius.circular(50),
                                           child: Image.network(
-                                              Global.USERDATA_URL + bankAdmins[index]['profile_picture'],
+                                              Global.USERDATA_URL + "banksampah/userdata/" + bankAdmins[index]['profile_picture'],
                                               width: 100,
                                               height: 100,
                                               fit: BoxFit.fill),

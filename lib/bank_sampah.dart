@@ -182,7 +182,7 @@ class BankSampahState extends State<BankSampah> {
                                                       widthFactor: 1,
                                                       heightFactor: 1,
                                                       child: Image.network(
-                                                          Global.USERDATA_URL + banks[index]['image_path'],
+                                                          Global.USERDATA_URL + "banksampah/userdata/" + banks[index]['image_path'],
                                                           width: width / 2 - 8 - 8,
                                                           height: 150,
                                                           fit: BoxFit.fill))),

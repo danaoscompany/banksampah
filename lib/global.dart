@@ -23,7 +23,7 @@ class Global {
   static var USERDATA_URL = PROTOCOL + "://" + HOST + "/banksampah/userdata/";*/
   static var HOST = "ebanksampah.com";
   static var API_URL = PROTOCOL+"://"+HOST+"/banksampah/ci_index.php";
-  static var USERDATA_URL = PROTOCOL+"://"+HOST+"/uploads/";
+  static var USERDATA_URL = PROTOCOL+"://"+HOST+"/";
   static int USER_ID = 0;
   static String FCM_KEY = "";
   static var mainColor = 0xFF00BE5B;
@@ -292,12 +292,12 @@ class Global {
     await flutterLocalNotificationsPlugin.show(0, title, body, platformChannelSpecifics, payload: payload);
   }
 
-  static void navigate(context, screen) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+  static void navigate(BuildContext context, var page) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => page));
   }
 
-  static void replaceScreen(context, screen) {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => screen));
+  static void replaceScreen(BuildContext context, var page) {
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => page));
   }
 
   static CircularProgressIndicator getProgressBar(Color color) {

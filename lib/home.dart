@@ -236,7 +236,7 @@ class HomeState extends State<Home> {
                                 itemBuilder: (BuildContext context, int index) {
                                   //print("IMAGE URL:");
                                   //print(Global.USERDATA_URL + banks[index]['image_path']);
-                                  var imageURL = Global.USERDATA_URL + banks[index]['image_path'];
+                                  var imageURL = Global.USERDATA_URL + "uploads/banks/" + banks[index]['image_path'];
                                   return Container(
                                       width: 100,
                                       height: 250,
@@ -329,7 +329,7 @@ class HomeState extends State<Home> {
                                               ClipRRect(
                                                   borderRadius: BorderRadius.circular(8.0),
                                                   child: Image.network(
-                                                      Global.USERDATA_URL + informations[index]['image_path'],
+                                                      Global.USERDATA_URL + "banksampah/userdata/" + informations[index]['image_path'],
                                                       width: MediaQuery.of(context).size.width,
                                                       height: 240,
                                                       fit: BoxFit.fill)),
@@ -396,7 +396,7 @@ class HomeState extends State<Home> {
                                         child: Row(children: [
                                           ClipRRect(
                                               borderRadius: BorderRadius.circular(8.0),
-                                              child: Image.network(Global.USERDATA_URL + "bank_images/" + news[index]['image_path'],
+                                              child: Image.network(Global.USERDATA_URL + "uploads/news/" + news[index]['image_path'],
                                                   width: 100, height: 100, fit: BoxFit.fill)),
                                           SizedBox(width: 10),
                                           Expanded(

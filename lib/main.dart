@@ -71,7 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> goToHome(context, string) async {
-    Global.replaceScreen(context, Home(context, string));
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+  	  Global.replaceScreen(context, Home(context, string));
+	});
   }
 
   @override
