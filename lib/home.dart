@@ -119,7 +119,7 @@ class HomeState extends State<Home> {
     return response.body;
   }
 
-  Future<String> getMaterials() async {
+  Future<String> getNews() async {
     final response = await http.get(Uri.parse(Global.API_URL + "/user/get_news"));
     return response.body;
   }
@@ -375,19 +375,19 @@ class HomeState extends State<Home> {
                             child: Text(widget.string.text16,
                                 style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold))),
                         FutureBuilder<String>(
-                            future: getMaterials(),
+                            future: getNews(),
                             builder: (context, snapshot) {
                               if (snapshot.data == null) {
                                 return Container(width: 0, height: 0);
                               }
-                              var materials = jsonDecode(snapshot.data!);
-                              //print("ALL MATERIALS:");
-                              //print(materials);
+                              var news = jsonDecode(snapshot.data!);
+                              //print("ALL NEWS:");
+                              //print(news);
                               return ListView.builder(
                                   physics: NeverScrollableScrollPhysics(),
                                   primary: false,
                                   shrinkWrap: true,
-                                  itemCount: materials.length,
+                                  itemCount: news.length,
                                   itemBuilder: (context, index) {
                                     return Container(
                                         width: MediaQuery.of(context).size.width,
@@ -396,18 +396,18 @@ class HomeState extends State<Home> {
                                         child: Row(children: [
                                           ClipRRect(
                                               borderRadius: BorderRadius.circular(8.0),
-                                              child: Image.network(Global.USERDATA_URL + materials[index]['image_path'],
+                                              child: Image.network(Global.USERDATA_URL + "bank_images/" + news[index]['image_path'],
                                                   width: 100, height: 100, fit: BoxFit.fill)),
                                           SizedBox(width: 10),
                                           Expanded(
                                               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                            Text(Jiffy(materials[index]['date']).format("d MMMM yyyy"),
+                                            Text(Jiffy(news[index]['date']).format("d MMMM yyyy"),
                                                 style: TextStyle(
                                                     color: Color(Global.mainColor),
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 14),
                                                 textAlign: TextAlign.left),
-                                            Text(materials[index]['title'],
+                                            Text(news[index]['title'],
                                                 style: TextStyle(
                                                     color: Colors.black, fontWeight: FontWeight.bold, fontSize: 14),
                                                 maxLines: 3,

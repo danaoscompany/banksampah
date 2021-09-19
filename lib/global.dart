@@ -23,7 +23,7 @@ class Global {
   static var USERDATA_URL = PROTOCOL + "://" + HOST + "/banksampah/userdata/";*/
   static var HOST = "ebanksampah.com";
   static var API_URL = PROTOCOL+"://"+HOST+"/banksampah/ci_index.php";
-  static var USERDATA_URL = PROTOCOL+"://"+HOST+"/banksampah/userdata/";
+  static var USERDATA_URL = PROTOCOL+"://"+HOST+"/uploads/";
   static int USER_ID = 0;
   static String FCM_KEY = "";
   static var mainColor = 0xFF00BE5B;
