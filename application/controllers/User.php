@@ -50,8 +50,8 @@ class User extends CI_Controller {
 		echo json_encode($informations);
 	}
 	
-	public function get_materials() {
-		$materials = $this->db->query("SELECT * FROM `materials` ORDER BY `date` DESC")->result_array();
+	public function get_news() {
+		$materials = $this->db->query("SELECT * FROM `news` ORDER BY `date` DESC")->result_array();
 		echo json_encode($materials);
 	}
 	

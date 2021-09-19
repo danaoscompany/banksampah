@@ -120,7 +120,7 @@ class HomeState extends State<Home> {
   }
 
   Future<String> getMaterials() async {
-    final response = await http.get(Uri.parse(Global.API_URL + "/user/get_materials"));
+    final response = await http.get(Uri.parse(Global.API_URL + "/user/get_news"));
     return response.body;
   }
 
