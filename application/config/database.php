@@ -79,6 +79,7 @@ $db['default'] = array(
 	'username' => 'ebad9997_bs',
 	'password' => 'ZnmMmyMLa=Px',
 	'database' => 'ebad9997_bs',
+	'port' 	   => '3306',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,3 +95,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
