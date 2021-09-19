@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'ebad9997_banksampah',
-	'password' => 'x4)z;,@G>bCL:5Jf',
-	'database' => 'ebad9997_banksampah',
+	'username' => 'ebad9997_bs',
+	'password' => 'ZnmMmyMLa=Px',
+	'database' => 'ebad9997_bs',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
